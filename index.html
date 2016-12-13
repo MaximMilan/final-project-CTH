@@ -1,0 +1,121 @@
+<html>
+  <head> 
+     
+    <title>Roomies</title>    
+    <link href="css/style.css" rel="stylesheet"/>
+        <!-- import jquery -->    
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>   
+        <!-- import handlebars -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>  
+
+  </head>
+  <body>
+    
+    <div class="chatbox">        
+        <div class="enternickname">
+          <input type="text" id="input_nickname" placeholder="Type Nickname Here..." maxlength="14"></input>
+          <button onclick="send_nickname();">Start Chat</button> 
+        </div>
+        
+        <div id="chatarea_id" class="chatarea">
+          <script id="chat_friend_template" type="text/x-handlebars-template">
+          <div class="chat friend">
+          <div class="username"> <label>{{username}}</label> </div> 
+          <p class="chat-message" id="chat-message-friend" style="background: {{color}};">{{message}}</p>   
+        </div>
+          </script>
+
+          <script id="chat_self_template" type="text/x-handlebars-template">
+        <div class="chat self">
+          <div class="username"> <label>{{username}}</label> </div> 
+          <p class="chat-message" id="chat-message-self" >{{message}}</p>
+        </div>
+          </script>
+    </div>
+ 
+
+    <div class="chat-form">
+
+       <textarea id="input_text" placeholder="Type here..."></textarea>
+       <button onclick="send_message();">Send</button>         
+
+    </div>
+
+
+
+       <!-- SCRIPTS -->
+       <!-- import socket.io -->
+       <script src="/socket.io/socket.io.js"></script>
+       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+      <script>
+
+        var my_username = '';
+
+           // connect to localhost on its port (see server.js -- 8088)
+        var socket = io().connect('http://localhost:8080');
+         // when connecting 
+        socket.on('connect', function (data) {
+            console.log('user connected');
+        });
+         // when receiving a custom message form the server ('message from robot')
+        socket.on('new message', function(msg) {
+   
+            display_chat_friend(msg);
+             console.log(msg);
+        });
+
+        function send_message() {
+
+          var text_in_textbox = document.getElementById('input_text').value;
+
+          display_chat_self({username: my_username, message: text_in_textbox});
+
+             socket.emit('new message', text_in_textbox);
+        }
+
+
+        function send_nickname() {
+
+          var text_in_textbox = document.getElementById('input_nickname').value;
+          
+          console.log(text_in_textbox);
+
+          my_username = text_in_textbox;
+
+          socket.emit('add user', text_in_textbox);
+        }
+
+        function display_chat_friend(data) {
+
+          var template_script = $("#chat_friend_template").html();
+          var template = Handlebars.compile(template_script);
+          var html_chat_friend = template(data);
+
+          $("#chatarea_id").append(html_chat_friend);
+        }
+
+        function display_chat_self(data) {
+
+          var template_script = $("#chat_self_template").html();
+          var template = Handlebars.compile(template_script);
+          var html_chat_self = template(data);
+
+          $("#chatarea_id").append(html_chat_self);
+        }
+
+      </script>       
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

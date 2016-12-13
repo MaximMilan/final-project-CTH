@@ -1,0 +1,166 @@
+*{
+   margin: 0;
+   padding: 0;
+   font-family: Arial;
+   box-sizing: border-box;
+}
+
+body {
+
+   background: radial-gradient(circle, #F6D8CE, white);
+   position: relative;
+
+}
+.enternickname {
+   width: 100%;
+   height: 70px;
+   background: white;
+}
+.enternickname input {
+   background: #fbfbfb;
+   width: 70%;
+   height: 50px;
+   border: 2px solid #eee;
+   border-radius: 3px;
+   resize: none;
+   padding: 15px;
+   font-size: 18px;
+   color: #333;
+}
+
+.enternickname input:focus {
+   background: #FFF;
+
+}
+
+.enternickname button {
+   background: #F6D8CE;
+   padding: 5px 15px;
+   font-size: 15px;
+   height: 50px;
+   color: #151515;
+   border: none;
+   margin: 0 15px;
+   border-radius: 3px;
+   box-shadow: 0 3px 0 #F5A9A9;
+   cursor: pointer;
+
+   -webkit-transition: background .2s ease;
+   -moz-transition: background .2s ease;
+   -o-transition: background .2s ease;
+} 
+
+
+.enternickname button:hover {
+   background: #F2F5A9;
+
+}   
+.chatbox {
+   width: 500px;
+   min-width: 390px;
+   height: 600px;
+   background: #fff;
+   padding: 25px;
+   margin: 20px auto;
+   box-shadow: 0 3px #ccc;
+   border-radius: 10px;
+}
+
+.chatarea {
+   padding: 10px;
+   width: 100%;
+   height: 450px;
+   overflow-x: hidden;
+   overflow-y: scroll;
+
+}
+.chatarea: :-webkit-scrollbar {
+   width: 10px;
+
+}
+
+.chatarea: :-webkit-scrollbar-thumb {
+   border-radius: 5px;
+   background: rgba(0,0,0,.1);
+}
+.chat {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: flex-start;
+   margin-bottom: 10px;   
+
+}
+.chat .chat-message {
+   width: 80%;
+   padding: 15px;
+   margin: 5px 10px 0;
+   border-radius: 10px;
+   color: #151515;
+   font-size: 20px;
+
+}
+
+.friend .chat-message {
+   box-shadow: 0 3px 0 #FFFF00;
+
+}
+
+.self .chat-message {
+   background: #F6D8CE;
+   box-shadow: 0 3px 0 #F5A9A9;
+   order: -1;
+
+}
+
+.chat-form {
+   margin-left: 20px;
+   display: flex;
+   align-items: flex-start;
+
+}
+
+.chat-form textarea {
+   background: #fbfbfb;
+   width: 75%;
+   height: 50px;
+   border: 2px solid #eee;
+   border-radius: 3px;
+   resize: none;
+   padding: 10px;
+   font-size: 18px;
+   color: #333;
+}
+
+.chat-form textarea:focus {
+   background: #FFF;
+}
+.chat-form textarea: :-webkit-scrollbar {
+   width: 10px;
+
+}
+
+.chat-form textarea: :-webkit-scrollbar-thumb {
+   border-radius: 5px;
+   background: rgba(0,0,0,.1);
+}
+
+.chat-form button {
+   background: #F6D8CE;
+   padding: 5px 15px;
+   font-size: 15px;
+   height: 50px;
+   color: #151515;
+   border: none;
+   margin: 0 10px;
+   border-radius: 3px;
+   box-shadow: 0 3px 0 #F5A9A9;
+   cursor: pointer;
+
+   -webkit-transition: background .2s ease;
+   -moz-transition: background .2s ease;
+   -o-transition: background .2s ease;
+}    
+
+.chat-form button:hover {
+   background: #F5A9A9;
+}

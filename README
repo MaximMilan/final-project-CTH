@@ -1,0 +1,8 @@
+Server listening at port 8080
+
+IP based Chatroom built in Sublime text using socket.io + Node.js.
+languages used: HTML, JavaScript, JQuery, CSS.
+Sent to Localhost by server.
+
+Authors: Annabel Burger + Maxim van den Broeke
+Title: Roomies
